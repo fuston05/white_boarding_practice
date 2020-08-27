@@ -1,14 +1,12 @@
 
+# ********************************************************
+# ***************** python all() method ******************
 
-# python all() method
 # Return True if all elements of the iterable are true (or if the iterable is empty). Equivalent to:
 def testAll(iterable):
     res= all(iterable)
 
     return res
-
-
-
 
 if __name__ == "__main__":
     testIterable= ''
