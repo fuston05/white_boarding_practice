@@ -10,9 +10,9 @@
 
 def adjacentElementsProduct(inputArray):
     # if array not empty
-    largetsSoFar = min(inputArray)
+    largetsSoFar = inputArray[0] * inputArray[1]
     # single for loop over array.
-    for i in range(len(inputArray)-1):
+    for i in range(1, len(inputArray)-1):
         # multiply curEle with next Ele
         prod = inputArray[i] * inputArray[i+1]
         if prod > largetsSoFar:
@@ -22,7 +22,8 @@ def adjacentElementsProduct(inputArray):
     return largetsSoFar
 
 if __name__ == "__main__":
-    inputArray= [1, 0, 1, 0, 1000] # 0
+    inputArray= [-1, 100] # -100
+    # inputArray= [1, 0, 1, 0, 1000] # 0
     # inputArray= [-23, 4, -3, 8, -12] # -12
     # inputArray= [4, 1, 2, 3, 1, 5] # 6
     # inputArray= [5, 6, -4, 2, 3, 2, -23] # 30
