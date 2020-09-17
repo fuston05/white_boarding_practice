@@ -1,2 +1,3 @@
 # white_boarding_practice
-lambda whiteboarding practice
+This is where I practice code challenges 
+Most code challenges are from Code Signal
