@@ -25,7 +25,7 @@
 // Output: -1
 // Example 5:
 
-arr = [7,7,7,7,7,7,7]
+arr = [7, 7, 7, 7, 7, 7, 7]
 // Output: 7
 
 
@@ -39,28 +39,19 @@ var findLucky = function (arr) {
 
   // iterate over arr
   arr.forEach(ele => {
-    ele= parseInt(ele);
+    ele = parseInt(ele);
     // if num not in object
-    if (!(ele in table)) {
-      // add it num to object with occurance count as value
-      table[ele] = 1;
-    } else {
-      // else: increment it's count in the obj
-      table[ele]++;
-    }
+    !(ele in table) ? table[ele] = 1 : table[ele]++;
+
   })
-  let largestSoFar= 0
+  let largestSoFar = -1
   // iterate the obj, 
-  for (const elem in table) {
+  for (let elem in table) {
+    elem = parseInt(elem)
     // if key === value / 2:
-    if(parseInt(elem) === table[elem] ){
-      // add to 'largestSoFar' var.
-      if(parseInt(elem) > largestSoFar){
-        largestSoFar= parseInt(elem);
-      }
-    }
+    elem === table[elem] ? largestSoFar = Math.max(elem, largestSoFar) : null;
   }
-  return largestSoFar > 0 ? largestSoFar : -1;
+  return largestSoFar;
 };
 
 
