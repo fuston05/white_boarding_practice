@@ -35,9 +35,13 @@ var maxSubArray = function (nums) {
   console.log('original max_current: ', max_current)
   for (let i = 1; i < nums.length; i++) {
 
-    max_current = Math.max(((max_current + nums[i]), nums[i]));
+    if(nums[i] >= max_current + nums[i]){
+      max_current= nums[i];
+    }else{
+      max_current+= nums[i]
+    }
+
     console.log('nums[i]: ', nums[i]);
-    console.log('max_cur: ', Math.max( nums[i], (max_current + nums[i]) ));
     console.log('current + nums[i]: ', max_current + nums[i]);
     if (max_global < max_current) {
       max_global = max_current;
