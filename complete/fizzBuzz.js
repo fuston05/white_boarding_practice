@@ -30,29 +30,42 @@
 var fizzBuzz = function (n) {
   resultArray = [];
 
-  for (let i = 1; i <= n; i++){
+  for (let i = 1; i <= n; i++) {
     // multiples of both 3 and 5:
-      // if i % 5 === 0 && i % 3 === 0: 'FizzBuzz'
-    if (i % 3 === 0 && i % 5 === 0) {
-      resultArray.push('FizzBuzz');
+    //   // if i % 5 === 0 && i % 3 === 0: 'FizzBuzz'
+    // // min for both 3 and 5 == 3*5(15)
+    // if (i % 15 === 0) {
+    //   resultArray.push('FizzBuzz');
 
-      // if i % 3 === 0: 'Fizz'
-    } else if (i % 3 === 0) {
-      resultArray.push('Fizz');
-      
-      // if i % 5 === 0: 'Buzz'
-    } else if (i % 5 === 0) {
-      resultArray.push('Buzz');
-      
-    } else {
-      resultArray.push(String(i));
+    //   // if i % 3 === 0: 'Fizz'
+    // } else if (i % 3 === 0) {
+    //   resultArray.push('Fizz');
+
+    //   // if i % 5 === 0: 'Buzz'
+    // } else if (i % 5 === 0) {
+    //   resultArray.push('Buzz');
+
+    // } else {
+    //   resultArray.push(i.toString());
+    // }
+
+    // future proof version
+    let str = "";
+
+    if (i % 3 === 0) {
+      str += "Fizz";
     }
-  }//end for
-    
+    if (i % 5 === 0) {
+      str += "Buzz";
+    }
+    if (str.length === 0) {
+      str += i;
+    }
+    resultArray.push(str);
+  } // end for
+
   return resultArray;
 };
-
-
 
 const num = 15;
 // const num = 5;
