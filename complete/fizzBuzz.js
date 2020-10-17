@@ -29,6 +29,10 @@
 
 var fizzBuzz = function (n) {
   resultArray = [];
+  let map = {
+    3: 'Fizz',
+    5: 'Buzz',
+  }
 
   for (let i = 1; i <= n; i++) {
     // multiples of both 3 and 5:
@@ -49,18 +53,35 @@ var fizzBuzz = function (n) {
     //   resultArray.push(i.toString());
     // }
 
-    // future proof version
-    let str = "";
+    //  ***********************************
 
-    if (i % 3 === 0) {
-      str += "Fizz";
-    }
-    if (i % 5 === 0) {
-      str += "Buzz";
-    }
+    let str = "";
+    // // future proof version
+
+    // if (i % 3 === 0) {
+    //   str += "Fizz";
+    // }
+    // if (i % 5 === 0) {
+    //   str += "Buzz";
+    // }
+    // if (str.length === 0) {
+    //   str += i;
+    // }
+
+
+    // ********************************
+
+    // more scalability
+    for (let key in map) {
+      if (i % parseInt(key) === 0) {
+        str += map[key];
+      }
+    }// end key loop
+
     if (str.length === 0) {
       str += i;
     }
+
     resultArray.push(str);
   } // end for
 
