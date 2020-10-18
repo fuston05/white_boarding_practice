@@ -1,5 +1,7 @@
 // leet code challenge
 
+// ** I am having a hard time understanding the structure of the test cases fully in order to solve this one.
+
 
 //  * Definition for singly-linked list.
 function ListNode(val, next) {
