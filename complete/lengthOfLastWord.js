@@ -7,7 +7,11 @@
 // Note: A word is defined as a maximal substring consisting of non-space characters only.
 
 // Example:
-s= "Hello World"
+// s= "Hello World"
+// Output: 5
+
+// Example:
+s= ""
 // Output: 5
 
 // Example:
@@ -23,32 +27,19 @@ s= "Hello World"
 // Output: 1
 
 var lengthOfLastWord = function (s) {
-  console.log('s length: ', s.length);
-  if (!s.length) { return 0 }
-
   let arr = s.split(' ');
-  console.log('arr: ', arr);
-  console.log('arr length: ', arr.length);
   // remove empty's
   let count = 0;
   while(count < arr.length){
 
     if (arr[count].length < 1) {
-      console.log('removing ', arr[count]);
       arr.splice(count, 1);
     } else {
       count++;
     }
   }
-  console.log('after splice: ', arr);
 
-  let lastWord = arr.slice(-1).toString();
-  console.log('lastWord: ', lastWord);
-
-  let wordLength = lastWord.length;
-  console.log('wordLength ', wordLength);
-
-  return wordLength;
+  return arr.slice(-1).toString().length;
 };
 
 console.log(lengthOfLastWord(s));
