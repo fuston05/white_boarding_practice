@@ -6,8 +6,26 @@
 
 // You may assume the integer does not contain any leading zero, except the number 0 itself.
 
-var plusOne = function(digits) {
-    
+var plusOne = function (digits) {
+  // convert array => string
+  let temp = digits.join('');
+  console.log('temp: ', temp);
+  console.log('temp type: ', typeof temp);
+
+  // string => int
+  temp = BigInt(temp);
+  console.log('temp: ', temp);
+  console.log('temp type: ', typeof temp);
+
+  // add 1
+  temp++;
+  // convert back to an array
+  console.log('temp+1: ', temp);
+  // convert int => arr
+  let arr = Array.from(temp.toString(), Number);
+  console.log('arr: ', arr);
+
+  return arr;
 };
 
 // Example 1:
@@ -23,6 +41,10 @@ var plusOne = function(digits) {
 // Example 3:
 // digits = [0]
 // Output: [1]
+
+// Example 4:
+digits = [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,3]
+// Output: [6,1,4,5,3,9,0,1,9,5,1,8,6,7,0,5,5,4,4]
 
 console.log(plusOne(digits));
 
