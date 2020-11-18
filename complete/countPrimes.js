@@ -11,6 +11,7 @@ var countPrimes = function (n) {
     primes.push(true);
   }
 
+  // eliminate all multiples of each
   for (let i = 2; i * i < n; i++) {
     //      if 'unmarked'
     if (primes[i] === true) {
