@@ -58,12 +58,14 @@
 var isIsomorphic = function (s, t) {
   string1 = Array.from(s);
   string2 = Array.from(t);
+
   if (string1.length !== string2.length) {
     return false;
   }
 
   //  generate keys for mapping
   let key = [];
+  //  '28' is the max str length used in tests
   for (let i = 0; i < 28; i++) {
     key.push(Math.random() * i);
   }
@@ -75,18 +77,19 @@ var isIsomorphic = function (s, t) {
   let keyOneCount = 0;
   let keyTwoCount = 0;
 
-  //     map for string1
+  //  build maps
   for (let i = 0; i < string1.length; i++) {
-    //      pattern1
     if (!map1.hasOwnProperty(string1[i]) && !map2.hasOwnProperty(string2[i])) {
       map1[string1[i]] = key[keyOneCount];
       map2[string2[i]] = key[keyTwoCount];
       keyOneCount++;
       keyTwoCount++;
     }
+    //      build up patterns for comparison
     pattern1.push(map1[string1[i]]);
     pattern2.push(map2[string2[i]]);
   }
+  //  check if patterns match
   if (JSON.stringify(pattern1) !== JSON.stringify(pattern2)) return false;
 
   return true;
@@ -103,8 +106,8 @@ var isIsomorphic = function (s, t) {
 // Output: false
 
 // Example 3:
-s = "paper"
-t = "title"
+s = "paper";
+t = "title";
 // Output: true
 // Note:
 // You may assume both s and t have the same length.
