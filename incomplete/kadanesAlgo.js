@@ -13,21 +13,16 @@ const maxSubarraySum = (arr) => {
   let maxEndingHere = arr[0];
 
   for (let i = 1; i < arr.length; i++) {
-    console.log("maxEndingHere before: ", maxEndingHere);
     maxEndingHere = Math.max(arr[i], maxEndingHere + arr[i]);
-    console.log("maxEndingHere after: ", maxEndingHere);
 
-    if (maxSoFar < maxEndingHere) {
-      maxSoFar = maxEndingHere;
-    }
-    console.log("maxSoFar: ", maxSoFar);
+    maxSoFar = Math.max(maxSoFar, maxEndingHere);
   }
   return maxSoFar;
 };
 
 // Example 1:
 // N = 5
-// arr = [1, 2, 3, -2, 5];
+arr = [1, 2, 3, -2, 5];
 // Output: 9
 // Explanation: Max subarray sum is 9
 // of elements (1, 2, 3, -2, 5) which
@@ -35,7 +30,7 @@ const maxSubarraySum = (arr) => {
 
 // Example 2:
 // N = 4
-arr= [-1,-2,-3,-4]
+// arr= [-1,-2,-3,-4]
 // Output: -1
 // Explanation: Max subarray sum is -1
 
