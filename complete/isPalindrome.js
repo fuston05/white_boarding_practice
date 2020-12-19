@@ -17,7 +17,8 @@ const isPalindrome = (str) => {
 };
 
 // test cases
-str = "racecar";
-// str = "hello";
+// let str = "racecar";
+// let str = 'madam';
+// let str = "hello";
 
 console.log(isPalindrome(str));
