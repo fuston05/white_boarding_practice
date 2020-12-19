@@ -22,9 +22,8 @@ const reverseString = (str) => {
   // return revStr;
   // ////////////////////////////
   //  reduce
-  // return str.split("").reduce((revStr, char) => {
-  //   return char + revStr;
-  // });
+  // return str.split("").reduce((revStr, char) => char + revStr);
+
   // ///////////////////////////
   // for of loop
   // let revStr = '';
