@@ -2,11 +2,18 @@ const isPalindrome = (str) => {
   // first pass
   // return str === str.split("").reverse().join("");
 
-  let revStr = "";
-  for (let char of str) {
-    revStr = char + revStr;
-  }
-  return revStr === str;
+  //////////////////////////////////
+  // using for of loop
+  // let revStr = "";
+  // for (let char of str) {
+  //   revStr = char + revStr;
+  // }
+  // return revStr === str;
+
+  // ///////////////////////////////
+  // using reduce
+  const reversed = str.split('').reduce((revStr, char) => char + revStr);
+  return reversed === str;
 };
 
 // test cases
