@@ -1,6 +1,10 @@
+// //////////////// reverseString ///////////////////
+// /////////////////////////////////////////////////
 const reverseString = (str) => {
-  // return str.split("").reverse().join("");
-
+  // return str
+  // .split("")
+  //   .reverse()
+  //   .join("");
   // //////////////////////////////
   // no reverse method
   // incrementing for loop
@@ -9,7 +13,6 @@ const reverseString = (str) => {
   //   revStr = str[i] + revStr;
   // }
   // return revStr;
-
   // ////////////////////////////
   // decrementing for loop
   // let revStr = '';
@@ -17,23 +20,24 @@ const reverseString = (str) => {
   //   revStr = revStr + str[i];
   // }
   // return revStr;
-
   // ////////////////////////////
   //  reduce
   // return str.split("").reduce((revStr, char) => {
   //   return char + revStr;
   // });
-
   // ///////////////////////////
   // for of loop
-  let revStr = '';
-  for (let char of str) {
-    revStr = char + revStr;
-  }
-  return revStr;
+  // let revStr = '';
+  // for (let char of str) {
+  //   revStr = char + revStr;
+  // }
+  // return revStr;
 };
 
 // test cases
-let str = "hello";
+// let str = "hello";
 
-console.log(reverseString(str));
+// console.log(reverseString(str));
+
+// ////////////////  //////////////////
+// /////////////////////////////////////////////////
