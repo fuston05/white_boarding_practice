@@ -7,79 +7,49 @@
  * @param {string} str2
  * @return {string}
  */
-var gcdOfStrings = function(str1, str2) {
-  let outPut= '';
-  
-//     str1 must contain only letters found in str2 else: return ""
-//     find largest subStr that can be found in both ????
-  
-  
-/*
-  list all unique letters found in str2, 
-  str1 must have all those letters and ONLY those letters 
-  
-  .. loop over str2 find the largest substr
-  then check that it divides into str1 evenly
-  
-  - or -
-  EX STR2: 'AABC AABC'
 
-  letters= [str2[0]] // ['A', 'B', 'C']
-  shortestSub= []
+var gcdOfStrings = function (str1, str2) {
+  let result = "";
+  // all possible 'unique' letters in str2
+  let letters = [str2[0]];
+  let shortestSubStr = "";
+  let curLongestSubStr = str2;
 
-  BUILD LETTERS
-  loop over str2:
-    if !letters.contains(str2[i])
-      letters.push(str2[i])
+  // buile letters arr from str2
+  for (let i = 1; i < str2.length; i++) {
+    if (!letters.includes(str2[i])) {
+      letters.push(str2[i]);
+    }
+  }
+  console.log("letters: ", letters);
 
-  FIND SHORTEST SUBSTR OF STR2:
-    letterCount= 1
-    temp= [str2[0]]
-    loop over str2:
-      if letterCount < letters.length:
-        if temp[temp.length -1] !== str2[i] : letterCount++
-        temp.push(str2[i])
-      else:
-        shortestSub.push(temp)
+  // find shortest possible substr in str2
+  let temp = "";
+  let letterCount = 0;
 
-  CHECK STR1 AGAINST shortestSub
-    loop over str1:
-      if !shortestSub[i] === str1[i]
-        return "" // we're done
-      else:
-        
-
-
-    either aabc or aabc*2, aabc*3 etc... 
+  for (let i = 0; letterCount < letters.length; i++) {
+    console.log("temp: ", temp);
+    if (!temp.includes(str2[i])) {
+      letterCount++;
+    }
+    temp += str2[i];
+  }
+  shortestSubStr = temp;
+  console.log("temp: ", temp);
 
 
 
-  at the end push temp onto table, slice it out of str2 
 
 
-
-  use nested loops to iterate both checking for shrinking substr from str2 is common
-    starting with the whole str2 (largest possible substr) as curSubStr
-    check str1 contains curSubstr:
-      if so: slice it out of str1: repeat if letters remain in str1 
-      else: shorten curSubStr (if it has repeatable substr pattern)
-    
-    if we can slice out the substr until str1 is empty then it EVENLY divides out str1
-    return current substr if not shorten the substr and repeat
-
-    str2 could be: 
-      'A'
-      'AAB'
-      ''
-
-*/
-  
-  return result.join('');
 };
 
+
+
+
+
 // TEST CASES
-str1 = "ABCABC", str2 = "ABC" //"ABC"
-// str1 = "ABABAB", str2 = "ABAB" // "AB"
+// str1 = "ABCABC", str2 = "ABC" //"ABC"
+(str1 = "ABABAB"), (str2 = "ABAB"); // "AB"
 // str1 = "LEET", str2 = "CODE" // ""
 // str1 = "ABCDEF", str2 = "ABC" // ""
 
