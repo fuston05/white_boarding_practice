@@ -22,10 +22,59 @@ var gcdOfStrings = function(str1, str2) {
   then check that it divides into str1 evenly
   
   - or -
+  EX STR2: 'AABC AABC'
+
+  letters= [str2[0]] // ['A', 'B', 'C']
+  shortestSub= []
+
+  BUILD LETTERS
+  loop over str2:
+    if !letters.contains(str2[i])
+      letters.push(str2[i])
+
+  FIND SHORTEST SUBSTR OF STR2:
+    letterCount= 1
+    temp= [str2[0]]
+    loop over str2:
+      if letterCount < letters.length:
+        if temp[temp.length -1] !== str2[i] : letterCount++
+        temp.push(str2[i])
+      else:
+        shortestSub.push(temp)
+
+  CHECK STR1 AGAINST shortestSub
+    loop over str1:
+      if !shortestSub[i] === str1[i]
+        return "" // we're done
+      else:
+        
+
+
+    either aabc or aabc*2, aabc*3 etc... 
+
+
+
+  at the end push temp onto table, slice it out of str2 
+
+
+
   use nested loops to iterate both checking for shrinking substr from str2 is common
+    starting with the whole str2 (largest possible substr) as curSubStr
+    check str1 contains curSubstr:
+      if so: slice it out of str1: repeat if letters remain in str1 
+      else: shorten curSubStr (if it has repeatable substr pattern)
+    
+    if we can slice out the substr until str1 is empty then it EVENLY divides out str1
+    return current substr if not shorten the substr and repeat
+
+    str2 could be: 
+      'A'
+      'AAB'
+      ''
+
 */
   
-  return outPut;
+  return result.join('');
 };
 
 // TEST CASES
