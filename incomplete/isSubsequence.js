@@ -21,6 +21,27 @@ var isSubsequence = function (s, t) {
   //     now check for 'b' starting at index of a +1
   //     if b occurs before a return false
   //     or if not found return false
+
+  let latestInd = -1;
+
+  for (let i = 0; i < s.length; i++) {
+    let curS = s[i];
+
+    // if curS is not found in 't'
+    if (t.search(curS) === -1) {
+      console.log('curS NOT found in "t"')
+      return false;
+    } else if(t.indexOf(curS) > latestInd){
+      // if curs is found, and it's index is > index of last found char
+      console.log('curS found: ', curS, ' at index: ', t.indexOf(curS))
+      latestInd = t.indexOf(curS);
+    } else {
+      console.log('curS found, but in wrong order')
+      // if curS is found, but it's index is < index of last found char
+      return false;
+    }
+  }
+  return true;
 };
 
 // Example 1:
