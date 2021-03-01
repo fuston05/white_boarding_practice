@@ -16,28 +16,42 @@ Return the leftmost pivot index. If no such index exists, return -1.
  * @return {number}
  */
 var pivotIndex = function (nums) {
+  // 1ST METHOD
   // loop left to right over nums,
   // store current left sum, and right sums
   // check if sums are equal, if not: move to right 1 and repeat
-  let result = -1;
+  // let result = -1;
 
-  for (let i = 0; i < nums.length; i++) {
-    let left = nums.slice(0, i);
-    let right = nums.slice(i + 1);
+  // for (let i = 0; i < nums.length; i++) {
+  //   let left = nums.slice(0, i);
+  //   let right = nums.slice(i + 1);
 
-    let leftSum = left.length > 0 ? left.reduce((acc, cur) => acc + cur) : 0;
+  //   let leftSum = left.length > 0 ? left.reduce((acc, cur) => acc + cur) : 0;
 
-    let rightSum = right.length > 0 ? right.reduce((acc, cur) => acc + cur) : 0;
+  //   let rightSum = right.length > 0 ? right.reduce((acc, cur) => acc + cur) : 0;
 
-    if (leftSum === rightSum) return result= i;
+  //   if (leftSum === rightSum) return result= i;
 
-    console.log("current: ", i);
-    console.log("left: ", left);
-    console.log('left sum: ', leftSum)
-    console.log("right: ", right);
-    console.log('right sum: ', rightSum)
+  //   console.log("current: ", i);
+  //   console.log("left: ", left);
+  //   console.log('left sum: ', leftSum)
+  //   console.log("right: ", right);
+  //   console.log('right sum: ', rightSum)
+  // }
+  // return result;
+
+  // 2ND METHOD
+  let total = nums.reduce((acc, cur) => acc + cur);
+  console.log('total: ', total);
+  let leftSum = 0;
+
+  for (let i = 0; i < nums.length; i++){
+    if (leftSum === total - leftSum - nums[i]) {
+      return i;
+    }
+    leftSum+= nums[i]
   }
-  return result;
+  return -1;
 };
 
 // Example 1:
