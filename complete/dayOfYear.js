@@ -15,12 +15,9 @@
  * @return {number}
  */
 var dayOfYear = function (date) {
-  let d = new Date(date)
-  let y = d.getFullYear();
-  let start = new Date(`${y}-01-01`)
+  let start = new Date(`${new Date(date).getFullYear()}-01-01`)
 
-  let diff = (d - start) / (1000 * 60 * 60 * 24) + 1;
-  return diff
+    return (new Date(date) - start) / (1000 * 60 * 60 * 24) + 1;
 };
 
 // Example 1:
