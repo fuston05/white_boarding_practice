@@ -32,11 +32,6 @@ var minDeletionSize = function (strs) {
   // if increasing sequence holds for all cols,
   // then at the end return 0
 
-  // loop strs and create a matrix
-  // for (let i = 0; i < strs.length; i++){
-  //   strs[i]= strs[i].split('');
-  // }
-
   // loop over matrix, check each column letter
   for (let i = 0; i < strs[0].length; i++) {
     for (let j = 0; j < strs.length - 1; j++) {
