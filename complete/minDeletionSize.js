@@ -25,40 +25,31 @@ Return the number of columns that you will delete.
  * @param {string[]} strs
  * @return {number}
  */
-var minDeletionSize = function(strs) {
+var minDeletionSize = function (strs) {
   let result = 0;
   // char code is < next char code.
   // if not then return 1
   // if increasing sequence holds for all cols,
   // then at the end return 0
-  
+
   // loop strs and create a matrix
   // for (let i = 0; i < strs.length; i++){
   //   strs[i]= strs[i].split('');
   // }
-  console.log('strs: ', strs);
-  
-  // loop over matrix, check each column letter
-  for (let i = 0; i < strs[0].length; i++){
 
-    for (let j = 0; j < strs.length-1; j++){
-      console.log('char: ', strs[j].charCodeAt(i))
-      if (strs[j].charCodeAt(i) > strs[j+1].charCodeAt(i)) {
-        console.log('prob: ', strs[j][i])
+  // loop over matrix, check each column letter
+  for (let i = 0; i < strs[0].length; i++) {
+    for (let j = 0; j < strs.length - 1; j++) {
+      if (strs[j].charCodeAt(i) > strs[j + 1].charCodeAt(i)) {
         result += 1;
         break;
       }
     }
   }
-
-  console.log('res: ', result);
-
 };
 
 // Example 1:
-let strs = ["cba",
-            "daf",
-            "ghi"]
+let strs = ["cba", "daf", "ghi"];
 // Output: 1
 // Explanation: The grid looks as follows:
 //   cba
