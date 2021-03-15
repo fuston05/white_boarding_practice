@@ -40,9 +40,14 @@ var shuffle = function (nums, n) {
 // Output: [1,4,2,3,3,2,4,1]
 
 // Example 3:
-let nums = [1,1,2,2];
-let n = 2;
+// let nums = [1,1,2,2];
+// let n = 2;
 // Output: [1,2,1,2]
+
+// Example 4:
+let nums = [0];
+let n = 0;
+// Output: []
 
 // Constraints:
 // 1 <= n <= 500
