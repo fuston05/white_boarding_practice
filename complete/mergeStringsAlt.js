@@ -11,27 +11,35 @@
  * @return {string}
  */
 var mergeAlternately = function (word1, word2) {
-  let result = "";
-  let count = 0;
-  console.log("word1: ", word1);
-  console.log("word1[0]: ", word1[1]);
-  //     while both strings have length left
-  while (word1.length > 0 && word2.length > 0) {
+  let result = [];
+
+  let w1 = word1.split("");
+  let w2 = word2.split("");
+
+  while (w1.length > 0 && w2.length > 0) {
     //      alternately add letters to the result
-    let slice1 = word1.slice(word1.length - 1);
-    let slice2 = word2.slice(word2.length - 1);
-    result += slice1 + slice2;
-    count++;
-    console.log('w1: ', word1, 'w2: ', word2)
+    let slice1 = w1.shift();
+    let slice2 = w2.shift();
+    result.push(slice1);
+    result.push(slice2);
   }
-  return result;
-  //  when one runs out, break while loop:
   //     append the remaining string to result
+  if (w1.length > 0) {
+    let remaining= w1.join('')
+    result.push(remaining);
+    return result.join('');
+  }
+  if (w2.length > 0) {
+    let remaining = w2.join('');
+    result.push(remaining);
+    return result.join('');
+  }
+  return result.join("");
 };
 
 // Example 1:
-let word1 = "abc";
-let word2 = "pqr";
+// let word1 = "abc";
+// let word2 = "pqr";
 // Output: "apbqcr"
 // Explanation: The merged string will be merged as so:
 // word1:  a   b   c
@@ -40,7 +48,7 @@ let word2 = "pqr";
 
 // Example 2:
 // let word1 = "ab";
-// let word2 = "pqrs;"
+// let word2 = "pqrs;";
 // Output: "apbqrs"
 // Explanation: Notice that as word2 is longer, "rs" is appended to the end.
 // word1:  a   b
@@ -55,6 +63,11 @@ let word2 = "pqr";
 // word1:  a   b   c   d
 // word2:    p   q
 // merged: a p b q c   d
+
+// Example 4:
+let word1 = "ab";
+let word2 = "pqrs";
+// Output: "apbqrs"
 
 // Constraints:
 // 1 <= word1.length, word2.length <= 100
