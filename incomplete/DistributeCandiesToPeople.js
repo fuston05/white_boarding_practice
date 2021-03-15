@@ -33,14 +33,18 @@ var distributeCandies = function (candies, num_people) {
   let remainingCandies = candies;
   let count = 1;
   let people_candy = [];
-  let result = [];
   let i = 0;
 
-  while (remainingCandies > 0) {
+  while (remainingCandies > 0 || people_candy.length < num_people) {
     let candiesToGive = remainingCandies >= count ? count : remainingCandies;
-
+    console.log("count: ", count);
     if (count <= num_people) {
+      // what if we're out of candy, but havent visited all the people yet??
+      if (remainingCandies <= 0) {
+        candiesToGive = 0;
+      }
       people_candy.push(candiesToGive);
+      console.log("added: ", candiesToGive);
     } else {
       people_candy[i] += candiesToGive;
     }
@@ -48,13 +52,15 @@ var distributeCandies = function (candies, num_people) {
     remainingCandies -= candiesToGive;
 
     // handle the i rollover
-    if (i < num_people -1) {
+    if (i < num_people - 1) {
       i++;
     } else {
       i = 0;
     }
-    console.log('people_candy: ', people_candy)
-    console.log('remaining: ', remainingCandies)
+    console.log("people_candy: ", people_candy);
+    console.log("remaining: ", remainingCandies);
+    console.log("num_people: ", num_people);
+    console.log("people left: ", num_people - people_candy.length);
 
     count++;
   }
@@ -72,14 +78,19 @@ var distributeCandies = function (candies, num_people) {
 // On the fourth turn, ans[3] += 1(because there is only one candy left), and the final array is[1, 2, 3, 1].
 
 // Example 2:
-let candies = 10;
-let num_people = 3;
+// let candies = 10;
+// let num_people = 3;
 // Output: [5,2,3]
 // Explanation:
 // On the first turn, ans[0] += 1, and the array is [1,0,0].
 // On the second turn, ans[1] += 2, and the array is [1,2,0].
 // On the third turn, ans[2] += 3, and the array is [1,2,3].
 // On the fourth turn, ans[0] += 4, and the final array is [5,2,3].
+
+// Example 3:
+let candies = 600;
+let num_people = 40;
+// Output: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,5,0,0,0,0,0]
 
 // Constraints:
 // 1 <= candies <= 10^9
