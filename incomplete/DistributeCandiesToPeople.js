@@ -17,21 +17,53 @@
  * @return {number[]}
  */
 var distributeCandies = function (candies, num_people) {
-// track candies left
-  
-// track running total for each 'person'
-// while loop???
-    // while candies > 0??
-      // decrement candies that are added to each person as we go
-      // increment totals for each person as we give them candies
-      [
-          
-      ]
+  // track candies left
+
+  // track running total for each 'person'
+  // while loop???
+  // while candies > 0??
+  // decrement candies that are added to each person as we go
+  // increment totals for each person as we give them candies
+  // [
+  //     [0, 1], ... person 0 has 1 candy
+  //     [1, 2],  ... person 1 has 2 candy
+  //     [2, 3],  ... person 2 has 3 candy
+  // ]
+
+  let remainingCandies = candies;
+  let count = 1;
+  let people_candy = [];
+  let result = [];
+  let i = 0;
+
+  while (remainingCandies > 0) {
+    let candiesToGive = remainingCandies >= count ? count : remainingCandies;
+
+    if (count <= num_people) {
+      people_candy.push(candiesToGive);
+    } else {
+      people_candy[i] += candiesToGive;
+    }
+
+    remainingCandies -= candiesToGive;
+
+    // handle the i rollover
+    if (i < num_people -1) {
+      i++;
+    } else {
+      i = 0;
+    }
+    console.log('people_candy: ', people_candy)
+    console.log('remaining: ', remainingCandies)
+
+    count++;
+  }
+  return people_candy;
 };
 
 // Example 1:
-let candies = 7;
-let num_people = 4;
+// let candies = 7;
+// let num_people = 4;
 // Output: [1,2,3,1]
 // Explanation:
 // On the first turn, ans[0] += 1, and the array is [1,0,0,0].
@@ -40,8 +72,8 @@ let num_people = 4;
 // On the fourth turn, ans[3] += 1(because there is only one candy left), and the final array is[1, 2, 3, 1].
 
 // Example 2:
-// let candies = 10;
-// let num_people = 3;
+let candies = 10;
+let num_people = 3;
 // Output: [5,2,3]
 // Explanation:
 // On the first turn, ans[0] += 1, and the array is [1,0,0].
