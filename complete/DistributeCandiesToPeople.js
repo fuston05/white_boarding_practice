@@ -37,18 +37,20 @@ var distributeCandies = function (candies, num_people) {
 
   while (remainingCandies > 0 || people_candy.length < num_people) {
     let candiesToGive = remainingCandies >= count ? count : remainingCandies;
-    console.log("count: ", count);
+
+    // if we're on the 1st iteration over all people create, the initial amounts in the array
     if (count <= num_people) {
       // what if we're out of candy, but havent visited all the people yet??
       if (remainingCandies <= 0) {
         candiesToGive = 0;
       }
       people_candy.push(candiesToGive);
-      console.log("added: ", candiesToGive);
-    } else {
+    } else { // if we've made a complete 1st pass of all people 
+      // then increment amounts in the future iterations
       people_candy[i] += candiesToGive;
     }
-
+    
+    // decrement candies 
     remainingCandies -= candiesToGive;
 
     // handle the i rollover
@@ -57,10 +59,6 @@ var distributeCandies = function (candies, num_people) {
     } else {
       i = 0;
     }
-    console.log("people_candy: ", people_candy);
-    console.log("remaining: ", remainingCandies);
-    console.log("num_people: ", num_people);
-    console.log("people left: ", num_people - people_candy.length);
 
     count++;
   }
