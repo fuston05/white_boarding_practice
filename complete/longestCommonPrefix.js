@@ -23,27 +23,36 @@ var longestCommonPrefix = function (strs) {
   if (strs.length === 0) {
     return "";
   }
+  if (strs.length === 1) {
+    return strs[0];
+  }
 
-  // find  the shortest word and start that as longest so far??
-  let shortest = [];
-  for (let i = 0; i < strs.length - 1; i++) {
-    if (strs[i].length < strs[i + 1].length) {
+  let shortest = strs[0].split("");
+
+  for (let i = 1; i < strs.length - 1; i++) {
+    console.log("strs[i]: ", strs[i], "strs[i+1]: ", strs[i + 1]);
+
+    if (strs[i].length < shortest.length) {
+      console.log("split: ", strs[i].split(""));
       shortest = strs[i].split("");
     }
   }
+  console.log("shortest: ", shortest);
+  console.log("strs: ", strs);
 
-  let count = 0;
-  while (count < (shortest.length * strs.length)) {
-    let isNotCommon = true;
+  while (shortest.length > 0) {
+    let notFound = false;
     strs.forEach((str) => {
-      if (!str.includes(shortest.join(""))) {
-        isNotCommon = true;
-      } else {
-        isNotCommon = false;
+      if (!str.startsWith(shortest.join(""))) {
+        notFound = true;
       }
     });
-    isNotCommon ? shortest.pop() : null;
-    count++;
+
+    if (notFound) {
+      shortest.pop();
+    } else {
+      return shortest.join("");
+    }
   }
   return shortest.join("");
 };
@@ -56,5 +65,13 @@ let strs = ["flower", "flow", "flight"];
 // let strs = ["dog", "racecar", "car"];
 // Output: ""
 // Explanation: There is no common prefix among the input strings.
+
+// Example 3:
+// let strs = ["ab", "a"];
+// Output: "a"
+
+// Example 4:
+// let strs = ["reflower","flow","flight"];
+// Output: ""
 
 console.log("result: ", longestCommonPrefix(strs));
