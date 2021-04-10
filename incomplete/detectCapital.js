@@ -15,31 +15,41 @@
  * @return {boolean}
  */
 var detectCapitalUse = function (word) {
-  word = word.split("");
-  console.log("word: ", word);
-  // numCaps= 0;
-  let numCaps = 0;
+  // word = word.split("");
+  // console.log("word: ", word);
+  // // numCaps= 0;
+  // let numCaps = 0;
 
-  // iterate to check is CAP?
-  // track num of caps
-  for (letter of word) {
-    if (letter.charCodeAt() < 91) {
-      numCaps++;
-    }
-  }
+  // // iterate to check is CAP?
+  // // track num of caps
+  // for (letter of word) {
+  //   if (letter.charCodeAt() < 91) {
+  //     numCaps++;
+  //   }
+  // }
 
-  console.log('numCaps: ', numCaps)
-  // if all caps, no caps, or only the 1st letter is caps
-  if (numCaps === word.length ||
-    numCaps === 0 ||
-    (numCaps === 1 && word[0].charCodeAt() < 91)) {
-    return true;
-  }
-  return false;
+  // console.log('numCaps: ', numCaps)
+  // // if all caps, no caps, or only the 1st letter is caps
+  // if (numCaps === word.length ||
+  //   numCaps === 0 ||
+  //   (numCaps === 1 && word[0].charCodeAt() < 91)) {
+  //   return true;
+  // }
+  // return false;
+
+  // *********** 2ND PASS SOLUTION *************
+  // ************* USING REGEX *****************
+
+  let re= /[A-Z]/g
+  let wordMatch = word.match(re)
+  let testRe= (/^[A-Z]$/).test(re)
+  console.log('wordMatch: ', wordMatch)
+  console.log('testRe: ', testRe)
+
 };
 
 // Example 1:
-// let word = "USA";
+let word = "USA";
 // Output: True
 
 // Example 2:
@@ -47,7 +57,7 @@ var detectCapitalUse = function (word) {
 // Output: False
 
 // Example 3:
-let word = "f"
+// let word = "f"
 // output: true
 
 // Note: The input will be a non-empty word consisting of uppercase and lowercase latin letters.
