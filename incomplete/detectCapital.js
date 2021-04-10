@@ -40,20 +40,29 @@ var detectCapitalUse = function (word) {
   // *********** 2ND PASS SOLUTION *************
   // ************* USING REGEX *****************
 
-  let re= /[A-Z]/g
-  let wordMatch = word.match(re)
-  let testRe= (/^[A-Z]$/).test(re)
-  console.log('wordMatch: ', wordMatch)
-  console.log('testRe: ', testRe)
+  // let reAllCaps = /^[A-Z]+$/g;
+  // let reAllLower = /^[a-z]+$/g;
+  // let capFirstChar = /^[A-Z]{1}[a-z]+$/g;
 
+  let testRegEx = /^[A-Z]+$|^[a-z]+$|^[A-Z]{1}[a-z]+$/g;
+  // // let testRegEx = capFirstChar;
+
+  // let wordMatch = word.match(testRegEx);
+  // let testRe = testRegEx.test(word);
+
+  // console.log("wordMatch: ", wordMatch);
+  // console.log("testRe: ", testRe);
+
+  console.log("test: ", testRegEx.test(word));
+  return testRegEx.test(word);
 };
 
 // Example 1:
-let word = "USA";
+// let word = "USA";
 // Output: True
 
 // Example 2:
-// let word= "FlaG"
+let word = "Flag";
 // Output: False
 
 // Example 3:
