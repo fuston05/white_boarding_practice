@@ -19,25 +19,27 @@
  * @return {string}
  */
 var sortString = function (s) {
-  let str = s.split("").sort((a, b) => a.charCodeAt() - b.charCodeAt());
-  console.log("str: ", str);
-  let result = [str[0]];
+  if (s.length === 1) { return s };
 
-  // iterate over s
-  for (let i = 0; i < str.length; i++) {
-    console.log("str[i]: ", str[i]);
-    // compare current letter to whats on the end of result
-    console.log("charcode: ", str[i].charCodeAt());
-    if (str[i].charCodeAt() > result[result.length - 1].charCodeAt()) {
-      // add letter to end of result
-      result.push(str[i]);
+  let str = s
+    .split("")
+    .sort((a, b) => a.charCodeAt() - b.charCodeAt())
+  console.log("starting str: ", str);
+  let p1 = 0;
+  let p2 = 1;
+
+  for (let i = 0; i < str.length; i++){
+    if (str[p1].charCodeAt() > result[result.length - 1].charCodeAt()) {
+      
     }
   }
-  console.log('result: ', result)
+
+  console.log("final str: ", str);
+  console.log("result: ", result);
 };
 
 // Example 1:
-// let s = "aaaabbbbcccc"
+let s = "aaaabbbbcccc";
 // Output: "abccbaabccba"
 // Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
 // After steps 4, 5 and 6 of the first iteration, result = "abccba"
@@ -46,7 +48,7 @@ var sortString = function (s) {
 // After steps 4, 5 and 6 of the second iteration, result = "abccbaabccba"
 
 // Example 2:
-let s = "rat";
+// let s = "rat";
 // Output: "art"
 // Explanation: The word "rat" becomes "art" after re-ordering it with the mentioned algorithm.
 
