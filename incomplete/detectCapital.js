@@ -17,22 +17,29 @@
 var detectCapitalUse = function (word) {
   word = word.split("");
   console.log("word: ", word);
-  // iterate through word
-  for (let i = 0; i < word.length; i++) {
-    console.log("word code: ", word[i], word[i].charCodeAt());
-    // check each word charcode > 90(Z)
-    if (word[i].charCodeAt() > 90) {
-      console.log("> 90: ", word[i]);
-      // if so, return false;
-      return false;
+  // numCaps= 0;
+  let numCaps = 0;
+
+  // iterate to check is CAP?
+  // track num of caps
+  for (letter of word) {
+    if (letter.charCodeAt() < 91) {
+      numCaps++;
     }
   }
 
-  return true;
+  console.log('numCaps: ', numCaps)
+  // if all caps, no caps, or only the 1st letter is caps
+  if (numCaps === word.length ||
+    numCaps === 0 ||
+    (numCaps === 1 && word[0].charCodeAt() < 91)) {
+    return true;
+  }
+  return false;
 };
 
 // Example 1:
-let word = "USA";
+// let word = "USA";
 // Output: True
 
 // Example 2:
@@ -40,7 +47,8 @@ let word = "USA";
 // Output: False
 
 // Example 3:
-// let word= "f"
+let word = "f"
+// output: true
 
 // Note: The input will be a non-empty word consisting of uppercase and lowercase latin letters.
 
