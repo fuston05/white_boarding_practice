@@ -19,28 +19,64 @@
  * @return {string}
  */
 var sortString = function (s) {
-  if (s.length === 1) { return s };
-
-  let str = s
-    .split("")
-    .sort((a, b) => a.charCodeAt() - b.charCodeAt())
-  console.log("starting str: ", str);
-  let p1 = 0;
-  let p2 = 1;
-
-  for (let i = 0; i < str.length; i++){
-    if (str[p1].charCodeAt() > result[result.length - 1].charCodeAt()) {
-      
-    }
+  if (s.length === 1) {
+    return s;
   }
 
-  console.log("final str: ", str);
-  console.log("result: ", result);
+  let str = s.split("").sort((a, b) => a.charCodeAt() - b.charCodeAt());
+  console.log("starting str: ", str);
+
+  let result = [];
+  while (str.length > 0) {
+    // step 1, add smallest letter from s to result
+    console.log("step 1, added smallest");
+    result.push(str[0]);
+    str.splice(0, 1);
+
+    // step 2-3, (incrementing)
+    console.log("starting 1st loop");
+    for (let i = 0; i < str.length; i++) {
+      console.log("I: ", i);
+
+      if (str[i].charCodeAt() > result[result.length - 1].charCodeAt()) {
+        console.log("removed: ", str[i]);
+        result.push(str[i]);
+        str.splice(i, 1);
+        console.log("new str: ", str);
+        i--;
+      }
+    }
+    // step 4. add the largest letter from s to result
+    result.push(str[str.length - 1]);
+    str.splice(str.length - 1, 1);
+    console.log("step 4, added largest");
+
+    console.log("starting 2nd loop");
+    // step 5-6, (decrementing)
+    for (let i = str.length - 1; i > 0; i--) {
+      console.log("I: ", i);
+
+      if (
+        str[i] &&
+        str[i].charCodeAt() < result[result.length - 1].charCodeAt()
+      ) {
+        console.log("removed: ", str[i]);
+        result.push(str[i]);
+        str.splice(i, 1);
+        console.log("new str: ", str);
+        i++;
+      }
+    }
+
+    console.log("final str: ", str);
+    console.log("result: ", result.join(""));
+  }
+  return result.join("");
 };
 
 // Example 1:
-let s = "aaaabbbbcccc";
-// Output: "abccbaabccba"
+// let s = "aaaabbbbcccc";
+// Out: "abccbaabccba"
 // Explanation: After steps 1, 2 and 3 of the first iteration, result = "abc"
 // After steps 4, 5 and 6 of the first iteration, result = "abccba"
 // First iteration is done. Now s = "aabbcc" and we go back to step 1
@@ -63,6 +99,10 @@ let s = "aaaabbbbcccc";
 // Example 5:
 // let s = "spo"
 // Output: "ops"
+
+// example 6:
+// let s = "L";
+// output: 'L'
 
 // Constraints:
 // 1 <= s.length <= 500
