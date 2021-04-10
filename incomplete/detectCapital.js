@@ -16,24 +16,31 @@
  */
 var detectCapitalUse = function (word) {
   word = word.split("");
+  console.log("word: ", word);
   // iterate through word
-  word.forEach((letter) => {
-    // check each letter charcode > 90(Z)
-    if (letter.charCodeAt() > 90) {
+  for (let i = 0; i < word.length; i++) {
+    console.log("word code: ", word[i], word[i].charCodeAt());
+    // check each word charcode > 90(Z)
+    if (word[i].charCodeAt() > 90) {
+      console.log("> 90: ", word[i]);
       // if so, return false;
       return false;
     }
-  });
+  }
+
   return true;
 };
 
 // Example 1:
-let word = "UsA";
+let word = "USA";
 // Output: True
 
 // Example 2:
 // let word= "FlaG"
 // Output: False
+
+// Example 3:
+// let word= "f"
 
 // Note: The input will be a non-empty word consisting of uppercase and lowercase latin letters.
 
