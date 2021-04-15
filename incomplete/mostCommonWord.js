@@ -11,11 +11,44 @@
  * @return {string}
  */
 var mostCommonWord = function (paragraph, banned) {
+  // convert paragraph to all lowercase?? 'banned' will always be lowercase
+  let p = paragraph.toLowerCase();
+  console.log('starting P: ', p)
+  // split paragraph into an array?
+  // STRING.split()
 
+  // remove all puctuation?
+  // iterate and
+  // re.test(string) ?
+  let re = /[a-z]/;
+  for (let i = 0; i < p.length; i++) {
+    if (!re.test(p[i])) {
+      p[i]= p[i].slice(i, (i + 1));
+    }
+  }
+
+  // iterate... O(n)
+  //  if word is 'banned' skip, else if not in dict, add to dict? else increment it's count in dict
+  // build a dictionary?
+  // {
+  // bob: 1,
+  // hit : 3,
+  // ball: 2...
+  // }
+
+  // which word occurred more?
+  // if dict length === 1 return that one? so, iterate the dic??
+
+  // edge cases:
+  //  what if there are 2 words that have same quantity? - nothing mentioned in the description....
+  //
+
+  console.log('ending P: ', p)
+  // return lowecase
 };
 
 // Example 1:
-let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit."
+let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
 let banned = ["hit"];
 // Output: "ball"
 // Explanation:
@@ -26,7 +59,7 @@ let banned = ["hit"];
 // and that "hit" isn't the answer even though it occurs more because it is banned.
 
 // Example 2:
-// let paragraph = "a." 
+// let paragraph = "a."
 // let banned = []
 // Output: "a"
 
