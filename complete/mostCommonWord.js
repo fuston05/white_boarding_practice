@@ -13,19 +13,18 @@
 var mostCommonWord = function (paragraph, banned) {
   // convert paragraph to all lowercase?? 'banned' will always be lowercase
   let p = paragraph.toLowerCase();
-  console.log('starting P: ', p)
+  let dict = {};
+  console.log("starting P: ", p);
+
+  // remove all puctuation and numbers?
+  // iterate and
+  // re.test(strign) ?
+  let re = /[0-9!?',;.]/g;
+  p = p.replace(re, " ");
+  console.log('after regex: ', p)
   // split paragraph into an array?
   // STRING.split()
-
-  // remove all puctuation?
-  // iterate and
-  // re.test(string) ?
-  let re = /[a-z]/;
-  for (let i = 0; i < p.length; i++) {
-    if (!re.test(p[i])) {
-      p[i]= p[i].slice(i, (i + 1));
-    }
-  }
+  p = p.split(" ");
 
   // iterate... O(n)
   //  if word is 'banned' skip, else if not in dict, add to dict? else increment it's count in dict
@@ -35,21 +34,40 @@ var mostCommonWord = function (paragraph, banned) {
   // hit : 3,
   // ball: 2...
   // }
-
+  for (word of p) {
+    if (word in dict && word.length) {
+      dict[word]++;
+    } else {
+      if (!banned.includes(word) && word.length) {
+        dict[word] = 1;
+      }
+    }
+  }
+  console.log('dict: ', dict)
   // which word occurred more?
-  // if dict length === 1 return that one? so, iterate the dic??
+  let maxSoFar = 0;
+  p.forEach((word) => {
+    if (dict[word] > maxSoFar) {
+      maxSoFar = dict[word];
+    }
+  });
 
-  // edge cases:
-  //  what if there are 2 words that have same quantity? - nothing mentioned in the description....
-  //
+  let result;
+  p.forEach((word) => {
+    if (dict[word] === maxSoFar) {
+      result = word;
+      return;
+    }
+  });
 
-  console.log('ending P: ', p)
-  // return lowecase
+  console.log("ending P: ", p);
+  console.log("max: ", maxSoFar);
+  return result;
 };
 
 // Example 1:
-let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
-let banned = ["hit"];
+// let paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.";
+// let banned = ["hit"];
 // Output: "ball"
 // Explanation:
 // "hit" occurs 3 times, but it is a banned word.
@@ -62,6 +80,11 @@ let banned = ["hit"];
 // let paragraph = "a."
 // let banned = []
 // Output: "a"
+
+// example 3:
+let paragraph = "a, a, a, a, b,b,b,c, c";
+let banned = ["a"];
+// Output: "b"
 
 // // Constraints:
 // 1 <= paragraph.length <= 1000
