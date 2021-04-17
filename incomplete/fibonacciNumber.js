@@ -12,19 +12,29 @@
  * @return {number}
  */
 var fib = function (n) {
+  let curFib = 1;
+  let prevFib = 0;
+  let temp;
 
-  // 0 + 1= 1
-  // 
+  while (n > 0) {
+    console.log("N: ", n, "curFib: ", curFib, "prevFib: ", prevFib, "temp: ", temp);
 
+    temp = curFib;
+    curFib = curFib + prevFib;
+    prevFib = temp;
+    n--;
+  }
+  console.log("final: ", prevFib);
+  return prevFib;
 };
 
 // Example 1:
-let n = 2;
+// let n = 2;
 // Output: 1
 // Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
 
 // Example 2:
-// let n = 3
+let n = 3
 // Output: 2
 // Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
 
