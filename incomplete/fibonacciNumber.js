@@ -11,6 +11,7 @@
  * @param {number} n
  * @return {number}
  */
+// ITERATIVE SOLUTION
 var fib = function (n) {
   let curFib = 1;
   let prevFib = 0;
@@ -28,13 +29,22 @@ var fib = function (n) {
   return prevFib;
 };
 
+// RECURSIVE SOLUTION
+// var fib = function (n) {
+//   if (n < 2) {
+//     return n;
+//   }
+
+//   return fib(n - 1) + fib(n - 2);
+// };
+
 // Example 1:
 // let n = 2;
 // Output: 1
 // Explanation: F(2) = F(1) + F(0) = 1 + 0 = 1.
 
 // Example 2:
-let n = 3
+// let n = 3;
 // Output: 2
 // Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
 
