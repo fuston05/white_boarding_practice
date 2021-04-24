@@ -8,7 +8,7 @@
  * @return {number}
  */
 var countNumbersWithUniqueDigits = function (n) {
-  let count = 0;
+  let count = 1;
 
   console.log(`\n10^${n}: `, 10 ** n, "\n");
 
@@ -16,13 +16,21 @@ var countNumbersWithUniqueDigits = function (n) {
     console.log("\nloopCount: ", i, "\n");
     // check if digits are unique for given number
 
-    console.log("count %: ", 0 % 11);
-    if (i > 0 && i % 11 === 0) {
+    let tempSet = new Set(i.toString().split(""));
+    let curNumStr = i.toString();
+
+    console.log("curNumStr: ", curNumStr, "len: ", curNumStr.length);
+    console.log("tempSet: ", tempSet, "len: ", tempSet.size);
+
+    if (i >= 10) {
+      if (tempSet.size === curNumStr.length) {
+        count++;
+      }
+    } else {
       count++;
     }
   }
-
-  return 10 ** n - count;
+  return count;
 };
 
 // Example 1:
@@ -35,7 +43,8 @@ var countNumbersWithUniqueDigits = function (n) {
 // Output: 1
 
 // Example 3:
-let n = 3;
+let n = 1;
+// Output: 10
 
 // Constraints:
 // 0 <= n <= 8
