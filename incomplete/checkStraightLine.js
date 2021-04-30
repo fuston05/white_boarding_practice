@@ -43,28 +43,18 @@ var checkStraightLine = function (coordinates) {
    * the higher the 'slope' the steeper the line (slope)
    */
 
-  let init_yChange = coordinates[1][1] - coordinates[0][1];
-  console.log(`init_yChange: ${init_yChange}`);
+  // helper func
+  const getSlope = (a, b) => {
+    if (b[0] === a[0]) {
+      return '#';
+    }
+    return (b[1] - a[1]) / (b[0] - a[0]);
+  }
 
-  let inti_xChange = coordinates[1][0] - coordinates[0][0];
-  console.log(`inti_xChange: ${inti_xChange}`);
+  let slope = getSlope(coordinates[0], coordinates[1]);
 
-  let initSlope = inti_xChange * init_yChange;
-  console.log(`initSlope: ${initSlope}`);
-  console.log('');
-
-  for (let i = 0; i < coordinates.length - 1; i++) {
-    let yChange = coordinates[i + 1][1] - coordinates[i][1];
-    console.log(`yChange: ${yChange}`);
-
-    let xChange = coordinates[i + 1][0] - coordinates[i][0];
-    console.log(`xChange: ${xChange}`);
-
-    let slope = xChange * yChange;
-    console.log(`slope: ${slope}`);
-    console.log('');
-
-    if (initSlope !== slope || yChange !== init_yChange || xChange !== inti_xChange) {
+  for (let i = 1; i < coordinates.length -1; i++){
+    if (getSlope(coordinates[i], coordinates[i + 1]) !== slope) {
       return false;
     }
   }
@@ -102,7 +92,12 @@ var checkStraightLine = function (coordinates) {
 // Output: true
 
 // Example 4:
-let coordinates = [[0,0],[0,5],[5,5],[5,0]];
+let coordinates = [
+  [0, 0],
+  [0, 5],
+  [5, 5],
+  [5, 0],
+];
 // Output: false
 
 // Constraints:
