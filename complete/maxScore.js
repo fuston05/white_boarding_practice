@@ -15,47 +15,84 @@ var maxScore = function (s) {
   // iterate over left and right: calc score
   // check if score > 'scoreSoFar'
   // if it is, update scoreSoFar.
-  const arrRight = s.split("");
-  const arrLeft = [];
-  let scoreSoFar = 0;
+  // const arrRight = s.split("");
+  // const arrLeft = [];
+  // let scoreSoFar = 0;
 
-  console.log("start arrRight: ", arrRight);
-  console.log("start arrLeft: ", arrLeft);
+  // console.log("start arrRight: ", arrRight);
+  // console.log("start arrLeft: ", arrLeft);
 
-  for (let i = 0; i < s.length-1; i++) {
-    // add on from the right to the left arr
-    arrLeft.push(arrRight.shift());
-    // tally up total of this iteration
-    let tempScore = 0;
+  // for (let i = 0; i < s.length-1; i++) {
+  //   // add on from the right to the left arr
+  //   arrLeft.push(arrRight.shift());
+  //   // tally up total of this iteration
+  //   let tempScore = 0;
 
-    // left score
-    arrLeft.forEach((num) => {
-      if (parseInt(num) === 0) {
-        tempScore += 1;
-      }
-    });
+  //   // left score
+  //   arrLeft.forEach((num) => {
+  //     if (parseInt(num) === 0) {
+  //       tempScore += 1;
+  //     }
+  //   });
 
-    // right score
-    arrRight.forEach((num) => {
-      if (parseInt(num) === 1) {
-        tempScore += 1;
-      }
-    });
+  //   // right score
+  //   arrRight.forEach((num) => {
+  //     if (parseInt(num) === 1) {
+  //       tempScore += 1;
+  //     }
+  //   });
 
-    console.log("");
-    console.log("arrRight: ", arrRight);
-    console.log("arrLeft: ", arrLeft);
-    console.log("tempScore: ", tempScore);
-    console.log("");
+  //   console.log("");
+  //   console.log("arrRight: ", arrRight);
+  //   console.log("arrLeft: ", arrLeft);
+  //   console.log("tempScore: ", tempScore);
+  //   console.log("");
 
-    // update the score if needed
-    if (tempScore > scoreSoFar) {
-      scoreSoFar = tempScore;
+  //   // update the score if needed
+  //   if (tempScore > scoreSoFar) {
+  //     scoreSoFar = tempScore;
+  //   }
+  //   console.log('scoreSoFar: ', scoreSoFar)
+
+  // }
+  // return scoreSoFar;
+
+  // ******** SECOND PASS SOLUTION *********
+  // ***************************************
+
+  let zeros = s[0] === "0" ? 1 : 0;
+  let ones = 0;
+  // sum all 1's
+  for (let i = 1; i < s.length; i++) {
+    console.log("s[i]: ", s[i]);
+    if (s[i] === "1") {
+      console.log("ones++: ", s[i]);
+      ones++;
     }
-    console.log('scoreSoFar: ', scoreSoFar)
-
   }
-  return scoreSoFar;
+  console.log("start ones: ", ones);
+  console.log("start zeros: ", zeros);
+
+  score = zeros + ones;
+  console.log("init score; ", score);
+
+  for (let i = 1; i < s.length - 1; i++) {
+    console.log("i: ", i);
+    if (s[i] === "0") {
+      console.log("s[i] === 0");
+      zeros++;
+    } else {
+      ones--;
+      console.log("decrement ones: ", ones, '\n');
+      console.log("zeros: ", zeros, "ones: ", ones);
+    }
+    let tempScore = zeros + ones;
+    console.log('tempScore: ', tempScore, 'score: ', score)
+    score = Math.max(tempScore, score);
+  }
+  console.log("zeros: ", zeros);
+  console.log("ones: ", ones);
+  return score;
 };
 
 // Example 1:
@@ -75,7 +112,7 @@ var maxScore = function (s) {
 // Explanation: When left = "00" and right = "111", we get the maximum score = 2 + 3 = 5
 
 // Example 3:
-let s = "1111"
+// let s = "1111";
 // Output: 3
 
 // Constraints:
