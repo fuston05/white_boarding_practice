@@ -8,25 +8,34 @@
 // For every odd-indexed level, all nodes at the level have even integer values in strictly decreasing order (from left to right).
 // Given the root of a binary tree, return true if the binary tree is Even-Odd, otherwise return false.
 
-/**
- * Definition for a binary tree node.
- * function TreeNode(val, left, right) {
- *     this.val = (val===undefined ? 0 : val)
- *     this.left = (left===undefined ? null : left)
- *     this.right = (right===undefined ? null : right)
- * }
- */
+// Definition for a binary tree node.
+function TreeNode(val, left, right) {
+  this.val = val === undefined ? 0 : val;
+  this.left = left === undefined ? null : left;
+  this.right = right === undefined ? null : right;
+}
+
 /**
  * @param {TreeNode} root
  * @return {boolean}
  */
 var isEvenOddTree = function (root) {
+  const q = [1]; //<- front of queue
+  const visited = new Set();
 
+  console.log("test: ", root);
 
+  // while (q.length) {
+    // dequeue'
+    // add to visited IF not already in visited
+    // add its neighbors to the Q
+    // console.log('cur: ')
+    // return;
+  // }
 };
 
 // Example 1:
-// let root = [1,10,4,3,null,7,9,12,8,6,null,null,2]
+let root = [TreeNode(1, TreeNode(10, TreeNode(3, TreeNode(12), TreeNode(8)), null), TreeNode(4, TreeNode(7, TreeNode(6), null), TreeNode(9, null, TreeNode(2))))];
 // Output: true
 // Explanation: The node values on each level are:
 // Level 0: [1]
@@ -60,3 +69,5 @@ var isEvenOddTree = function (root) {
 // Constraints:
 // The number of nodes in the tree is in the range [1, 105].
 // 1 <= Node.val <= 106
+
+isEvenOddTree(root);
