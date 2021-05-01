@@ -55,6 +55,7 @@ var maxScore = function (s) {
     console.log('scoreSoFar: ', scoreSoFar)
 
   }
+  return scoreSoFar;
 };
 
 // Example 1:
