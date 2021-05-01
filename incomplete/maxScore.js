@@ -10,11 +10,55 @@
  * @return {number}
  */
 var maxScore = function (s) {
+  // convert to array
+  // iterate, adding (shifting, and adding it to the left (unshift)) more to the left each time
+  // iterate over left and right: calc score
+  // check if score > 'scoreSoFar'
+  // if it is, update scoreSoFar.
+  const arrRight = s.split("");
+  const arrLeft = [];
+  let scoreSoFar = 0;
 
+  console.log("start arrRight: ", arrRight);
+  console.log("start arrLeft: ", arrLeft);
+
+  for (let i = 0; i < s.length-1; i++) {
+    // add on from the right to the left arr
+    arrLeft.push(arrRight.shift());
+    // tally up total of this iteration
+    let tempScore = 0;
+
+    // left score
+    arrLeft.forEach((num) => {
+      if (parseInt(num) === 0) {
+        tempScore += 1;
+      }
+    });
+
+    // right score
+    arrRight.forEach((num) => {
+      if (parseInt(num) === 1) {
+        tempScore += 1;
+      }
+    });
+
+    console.log("");
+    console.log("arrRight: ", arrRight);
+    console.log("arrLeft: ", arrLeft);
+    console.log("tempScore: ", tempScore);
+    console.log("");
+
+    // update the score if needed
+    if (tempScore > scoreSoFar) {
+      scoreSoFar = tempScore;
+    }
+    console.log('scoreSoFar: ', scoreSoFar)
+
+  }
 };
 
 // Example 1:
-let s = "011101"
+// let s = "011101";
 // Output: 5
 // Explanation:
 // All possible ways of splitting s into two non-empty substrings are:
@@ -30,11 +74,11 @@ let s = "011101"
 // Explanation: When left = "00" and right = "111", we get the maximum score = 2 + 3 = 5
 
 // Example 3:
-// let s = "1111"
+let s = "1111"
 // Output: 3
 
 // Constraints:
 // 2 <= s.length <= 500
 // The string s consists of characters '0' and '1' only.
 
-console.log(maxScore(s))
+console.log(maxScore(s));
