@@ -14,23 +14,29 @@ var generateTheString = function (n) {
   // returns a String
 
   let resString = "";
-  for (let i = 0; i < n; i++) {
+  let runTimes = n % 2 === 0 ? n - 1 : n;
+  for (let i = 0; i < runTimes; i++) {
     // generate a base string
     resString += "a";
   }
-  console.log("N: ", n, "\nstarting string: ", resString);
-  // if it's EVEN
-  if (resString.length % 2 === 0) {
+  if (n % 2 === 0) {
     console.log("EVEN");
-    resString = resString.slice(0, resString.length - 1);
     resString += "b";
-    console.log("str after slice: ", resString);
+    console.log("str after : ", resString);
   }
+  // console.log("N: ", n, "\nstarting string: ", resString);
+  // if it's EVEN
+  // if (n % 2 === 0) {
+  //   console.log("EVEN");
+  //   resString = resString.slice(0, resString.length - 1);
+  //   resString += "b";
+  //   console.log("str after slice: ", resString);
+  // }
   return resString;
 };
 
 // Example 1:
-// let n = 4;
+let n = 4;
 // Output: "pppz"
 // Explanation: "pppz" is a valid string since the character 'p' occurs three times and the character 'z' occurs once. Note that there are many other valid strings such as "ohhh" and "love".
 
@@ -40,7 +46,7 @@ var generateTheString = function (n) {
 // Explanation: "xy" is a valid string since the characters 'x' and 'y' occur once. Note that there are many other valid strings such as "ag" and "ur".
 
 // Example 3:
-let n = 7;
+// let n = 7;
 // Output: "holasss"
 
 // Constraints:
