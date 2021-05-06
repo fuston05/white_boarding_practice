@@ -16,10 +16,17 @@
  * @param {string} s
  * @return {boolean}
  */
-var checkRecord = function (s) {};
+var checkRecord = function (s) {
+  // FIRST PASS USING REGEX
+  const absencesPass = (s.match(/[A]{1}/g) && s.match(/[A]{1}/g).length > 1) ? false : true;
+  const latesPass = s.match(/[L]{3,}/) !== null ? false : true;
+
+  return (absencesPass === true && latesPass === true) ? true : false;
+
+};
 
 // Example 1:
-let s = "PPALLP";
+// let s = "PPALLP";
 // Output: true
 // Explanation: The student has fewer than 2 absences and was never late 3 or more consecutive days.
 
@@ -28,8 +35,14 @@ let s = "PPALLP";
 // Output: false
 // Explanation: The student was late 3 consecutive days in the last 3 days, so is not eligible for the award.
 
+// Example 3:
+let s = "ALLPPAL";
+// Output: false
+
 // Constraints:
 // 1 <= s.length <= 1000
 // s[i] is either 'A', 'L', or 'P'.
 
+console.log("");
 console.log(checkRecord(s));
+console.log("");
