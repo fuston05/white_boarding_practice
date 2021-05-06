@@ -17,12 +17,11 @@
  * @return {boolean}
  */
 var checkRecord = function (s) {
-  // FIRST PASS USING REGEX
+  // **** FIRST PASS USING REGEX ****
   const absencesPass = (s.match(/[A]{1}/g) && s.match(/[A]{1}/g).length > 1) ? false : true;
   const latesPass = s.match(/[L]{3,}/) !== null ? false : true;
 
   return (absencesPass === true && latesPass === true) ? true : false;
-
 };
 
 // Example 1:
