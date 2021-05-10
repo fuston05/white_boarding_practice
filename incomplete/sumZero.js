@@ -7,32 +7,28 @@
  * @param {number} n
  * @return {number[]}
  */
+
+// RunTime: O(n/2)= O(n)
 var sumZero = function (n) {
   if (n === 1) {
     return 0;
   }
 
+  // initialize our results arr;
   let arr = [];
 
   let loopTimes = n % 2 === 0 ? n/2 : Math.floor(n/2);
-  console.log('loopTimes: ', loopTimes)
 
   for (let i = 1; i <= loopTimes; i++) {
-    console.log("count: ", i);
     arr.push(i);
     arr.push(-i);
   }
+  
+  // if n is odd, add a 0 to the array
   if (n % 2 !== 0) {
     arr.push(0);
   }
 
-  let sum = arr.reduce((acc, cur) => {
-    return acc + cur;
-  });
-
-  
-  console.log("arr: ", arr);
-  console.log("sum: ", sum);
   return arr;
 };
 
@@ -42,7 +38,7 @@ var sumZero = function (n) {
 // Explanation: These arrays also are accepted[-5, -1, 1, 2, 3], [-3, -1, 2, -2, 4].
 
 // Example 2:
-// let n = 3
+let n = 3
 // Output: [-1, 0, 1]
 
 // Example 3:
