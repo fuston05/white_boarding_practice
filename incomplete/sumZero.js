@@ -13,13 +13,31 @@ var sumZero = function (n) {
   }
 
   let arr = [];
-  for (let i = 1; i <= n; i++){
-    console.log('count: ', i)
+
+  let loopTimes = n % 2 === 0 ? n/2 : Math.floor(n/2);
+  console.log('loopTimes: ', loopTimes)
+
+  for (let i = 1; i <= loopTimes; i++) {
+    console.log("count: ", i);
+    arr.push(i);
+    arr.push(-i);
   }
+  if (n % 2 !== 0) {
+    arr.push(0);
+  }
+
+  let sum = arr.reduce((acc, cur) => {
+    return acc + cur;
+  });
+
+  
+  console.log("arr: ", arr);
+  console.log("sum: ", sum);
+  return arr;
 };
 
 // Example 1:
-let n = 5;
+// let n = 5;
 // Output: [-7,-1,1,3,4]
 // Explanation: These arrays also are accepted[-5, -1, 1, 2, 3], [-3, -1, 2, -2, 4].
 
