@@ -13,54 +13,32 @@
  */
 var maxCount = function (m, n, ops) {
   if (ops.length === 0) {
-    return m*n;
+    return m * n;
   }
 
-  let M = {};
-  // buld table
-  for (let j = 0; j < m; j++) {
-    let row = j;
-    for (let k = 0; k < n; k++) {
-      let col = k;
-      M[[row, col]] = 0;
+  let min_first = ops[0][0];
+  let min_second = ops[0][1];
+
+  for (op of ops) {
+    if (op[0] < min_first) {
+      min_first= op[0]
+    }
+
+    if (op[1] < min_second) {
+      min_second= op[1]
     }
   }
-  console.log("starting M: ", M);
 
-  ops.forEach((op) => {
-    console.log("op: ", op);
-    let opsRow = op[0];
-    let opsCol = op[1];
-
-    for (let i = 0; i < opsRow; i++) {
-      for (let l = 0; l < opsCol; l++) {
-        M[[i, l]] += 1;
-        console.log(`M[${i}, ${l}]: `, M[[i, l]]);
-      }
-    }
-  });
-
-  const maxNum = Math.max(...Object.values(M));
-
-  let result = 0;
-
-  for (let y = 0; y < Object.values(M).length; y++) {
-    Object.values(M)[y] === maxNum ? result++ : null;
-  }
-
-  console.log("result: ", result);
-  console.log("maxNum: ", maxNum);
-  console.log("ending M: ", M);
-  return result;
+  return min_first * min_second;
 };
 
 // Example 1:
-let m = 3,
-  n = 3,
-  ops = [
-    [2, 2],
-    [3, 3],
-  ];
+// let m = 3,
+//   n = 3,
+//   ops = [
+//     [2, 2],
+//     [3, 3],
+//   ];
 // Output: 4
 // Explanation: The maximum integer in M is 2, and there are four of it in M.So return 4.
 
@@ -84,9 +62,9 @@ let m = 3,
 // Output: 4
 
 // Example 3:
-// let m = 3,
-//   n = 3,
-//   ops = [];
+let m = 3,
+  n = 3,
+  ops = [];
 // Output: 9
 
 // Example 4:
