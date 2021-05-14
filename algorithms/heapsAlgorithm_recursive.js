@@ -1,13 +1,16 @@
 // heaps algorithm (permutations)
 // https://en.wikipedia.org/wiki/Heap%27s_algorithm
+// runtime: O(n!)
 
 const getPermutations = (arr) => {
   const output = [];
 
   const swapInPlace = (arrToSwap, indA, indB) => {
-    const temp = arrToSwap[indA];
-    arrToSwap[indA] = arrToSwap[indB];
-    arrToSwap[indB] = temp;
+    // const temp = arrToSwap[indA];
+    // arrToSwap[indA] = arrToSwap[indB];
+    // arrToSwap[indB] = temp;
+
+    [arrToSwap[indA], arrToSwap[indB]] = [arrToSwap[indB], arrToSwap[indA]];
   };
 
   const generate = (n, heapArr) => {
