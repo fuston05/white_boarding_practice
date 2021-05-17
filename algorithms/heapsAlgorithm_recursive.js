@@ -6,10 +6,6 @@ const getPermutations = (arr) => {
   const output = [];
 
   const swapInPlace = (arrToSwap, indA, indB) => {
-    // const temp = arrToSwap[indA];
-    // arrToSwap[indA] = arrToSwap[indB];
-    // arrToSwap[indB] = temp;
-
     [arrToSwap[indA], arrToSwap[indB]] = [arrToSwap[indB], arrToSwap[indA]];
   };
 
