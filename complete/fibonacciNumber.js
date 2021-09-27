@@ -11,31 +11,24 @@
  * @param {number} n
  * @return {number}
  */
-// ITERATIVE SOLUTION
-var fib = function (n) {
-  let curFib = 1;
-  let prevFib = 0;
-  let temp;
 
-  while (n > 0) {
-    console.log("N: ", n, "curFib: ", curFib, "prevFib: ", prevFib, "temp: ", temp);
+// ITERATIVE SOLUTION #1
+const fib = (n) => {
+    let fibArr = [0, 1, 1];
+    if (n < 3) return 1;
 
-    temp = curFib;
-    curFib = curFib + prevFib;
-    prevFib = temp;
-    n--;
-  }
-  console.log("final: ", prevFib);
-  return prevFib;
+    for (let i = 3; i <= n; i++) {
+        fibArr.push(fibArr[i - 1] + fibArr[i - 2]);
+    }
+    console.log("fibArr: ", fibArr);
+    return fibArr[n];
 };
 
 // RECURSIVE SOLUTION
-// var fib = function (n) {
-//   if (n < 2) {
-//     return n;
-//   }
+// const fib = (n) => {
+//     if (n < 3) return 1;
 
-//   return fib(n - 1) + fib(n - 2);
+//     return fib(n - 1) + fib(n - 2);
 // };
 
 // Example 1:
@@ -49,9 +42,13 @@ var fib = function (n) {
 // Explanation: F(3) = F(2) + F(1) = 1 + 1 = 2.
 
 // Example 3:
-// let n = 4
+// let n = 4;
 // Output: 3
 // Explanation: F(4) = F(3) + F(2) = 2 + 1 = 3.
+
+// Example 4:
+let n = 5;
+// Output: 5
 
 // Constraints:
 // 0 <= n <= 30
